@@ -51,8 +51,25 @@
 
             <p></p>
 
-            <p id="center"><img id="loadingimage" src="Spinning arrows.gif" alt=""></p>
+            <p id="center"><img id="loadingimage2" src="Spinning arrows.gif" alt=""></p>
         </div>
+    </div>
+
+    <div id="game">
+        <div id="container">
+            <h1>Clicker Game</h1>
+            <div>
+              <label for="timeLimit">Time:</label>
+              <input type="number" id="timeLimit" value="10" min="1" max="60">
+              <button onclick="startGame()">Start Game</button>
+              <p></p>
+            </div>
+          
+            <div id="counter">Clicks: 0</div>
+            <div id="clickArea" style="display: none;"></div>
+            <div id="timer">Time: 10</div>
+            <div id="clicksPerSecond">Clicks / Second: 0</div>
+          </div>
     </div>
     
     <script src="script.js"></script>

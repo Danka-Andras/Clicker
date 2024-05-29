@@ -44,6 +44,12 @@ button:hover {
     display: none;
 }
 
+#loadingimage2{
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+
 #register{
     display: block;
 }
@@ -51,3 +57,27 @@ button:hover {
 #loginn{
     display: none;
 }
+
+#game{
+    display: none;
+    text-align: center;
+}
+
+#counter, #timer, #clicksPerSecond {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  #clickArea {
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  #clickArea:hover {
+    background-color: #add8e6;
+  }
