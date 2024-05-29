@@ -50,7 +50,7 @@
     }
     #clickArea {
       width: 200px;
-      height: 35px;
+      height: 200px;
       background-color: lightblue;
       display: flex;
       justify-content: center;
@@ -75,7 +75,7 @@
   </div>
 
   <div id="counter">Kattintások száma: 0</div>
-  <div id="clickArea" style="display: none;">Kattints ide!</div>
+  <div id="clickArea" style="display: none;"></div>
   <div id="timer">Idő: 10</div>
   <div id="clicksPerSecond">Másodpercenkénti kattintások: 0</div>
 </div>
@@ -115,7 +115,8 @@
 
   function startClicksPerSecondCounter() {
     setInterval(function() {
-      clicksPerSecondDisplay.textContent = 'Másodpercenkénti kattintások: ' + clicksPerSecond;
+      var cps = (clicksPerSecond / (10 - timeLimit)).toFixed(2);
+      clicksPerSecondDisplay.textContent = 'Másodpercenkénti kattintások: ' + cps;
       clicksPerSecond = 0;
     }, 1000);
   }
