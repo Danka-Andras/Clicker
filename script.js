@@ -91,3 +91,9 @@ function endGame() {
   clickArea.style.display = 'none';
   alert('A játék véget ért! Összpontszám: ' + clickCount);
 }
+
+function logOut(){
+    alert("Kijelentkezve")
+    loginn.style.display = "block";
+    game.style.display = "none";
+}
