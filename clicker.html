@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Időkorlátos Kattintós Játék</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    #container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="number"] {
+      width: 100px;
+      padding: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: lightblue;
+      color: #000;
+      border: none;
+      border-radius: 0; 
+    }
+    button:hover {
+      background-color: lightblue;
+    }
+    #counter, #timer, #clicksPerSecond {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    #clickArea {
+      width: 200px;
+      height: 35px;
+      background-color: lightblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+    #clickArea:hover {
+      background-color: #add8e6;
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <h1>Időkorlátos Kattintós Játék</h1>
+  <div>
+    <label for="timeLimit">Időkorlát (másodpercben):</label>
+    <input type="number" id="timeLimit" value="10" min="1" max="60">
+    <button onclick="startGame()">Játék indítása</button>
+  </div>
+
+  <div id="counter">Kattintások száma: 0</div>
+  <div id="clickArea" style="display: none;">Kattints ide!</div>
+  <div id="timer">Idő: 10</div>
+  <div id="clicksPerSecond">Másodpercenkénti kattintások: 0</div>
+</div>
+
+<script>
+  var clickCount = 0;
+  var clicksPerSecond = 0;
+  var counter = document.getElementById('counter');
+  var clickArea = document.getElementById('clickArea');
+  var timerDisplay = document.getElementById('timer');
+  var clicksPerSecondDisplay = document.getElementById('clicksPerSecond');
+  var timeLimitInput = document.getElementById('timeLimit');
+  var timeLimit = 10; 
+
+  function startGame() {
+    clickCount = 0;
+    clicksPerSecond = 0;
+    counter.textContent = 'Kattintások száma: 0';
+    clicksPerSecondDisplay.textContent = 'Másodpercenkénti kattintások: 0';
+    clickArea.style.display = 'block';
+    timeLimit = parseInt(timeLimitInput.value);
+    timerDisplay.textContent = 'Idő: ' + timeLimit;
+    startTimer();
+    startClicksPerSecondCounter();
+  }
+
+  function startTimer() {
+    var timer = setInterval(function() {
+      timeLimit--;
+      timerDisplay.textContent = 'Idő: ' + timeLimit;
+      if (timeLimit <= 0) {
+        clearInterval(timer);
+        endGame();
+      }
+    }, 1000);
+  }
+
+  function startClicksPerSecondCounter() {
+    setInterval(function() {
+      clicksPerSecondDisplay.textContent = 'Másodpercenkénti kattintások: ' + clicksPerSecond;
+      clicksPerSecond = 0;
+    }, 1000);
+  }
+
+  clickArea.addEventListener('click', function() {
+    clickCount++;
+    counter.textContent = 'Kattintások száma: ' + clickCount;
+    clicksPerSecond++;
+  });
+
+  function endGame() {
+    clickArea.style.display = 'none';
+    alert('A játék véget ért! Összpontszám: ' + clickCount);
+  }
+</script>
+
+</body>
+</html>
